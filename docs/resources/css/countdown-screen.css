@@ -1,0 +1,58 @@
+/**
+ *
+ * Copyright (c) 2020 Alexander Bazhanov
+ * https://github.com/bazhanius/
+ *
+ */
+
+.countdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 0.5px);
+    height: calc(100% - 0.5px);
+    border: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.countdown__digit {
+    position: absolute;
+    font-size: calc(var(--tile-width) * 3);
+    margin: 0;
+    padding: 0 0 calc(var(--tile-width) * 0.75) 0;
+    font-family: 'Exo 2', cursive;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .countdown__digit {
+        font-size: calc(var(--tile-width) * 2.5);
+    }
+}
+
+.digit__anim-fly-in {
+    animation: countdown-fly-out 1s 1 ease-in;
+}
+
+.digit__delay-1 {animation-delay: 0s;}
+.digit__delay-2 {animation-delay: 1s;}
+.digit__delay-3 {animation-delay: 2s;}
+.digit__delay-4 {animation-delay: 3s; background: linear-gradient(135deg, #06ffa5 0%, #00d4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none; filter: drop-shadow(0 8px 16px rgba(6, 255, 165, 0.5));}
+
+@keyframes countdown-fly-out {
+    0%   {transform: scale(0.5); opacity: 0;}
+    50%  {transform: scale(1);   opacity: 1;}
+    99%  {transform: scale(1);   opacity: 1;}
+    100% {transform: scale(0.5); opacity: 0;}
+}
