@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
-    <link rel="manifest" href="https://bazhanius.github.io/15-puzzle-game/manifest.json">
+    <link rel="manifest" href="manifest.json">
 
     <!-- Open Graph data -->
     <meta property="og:type" content="website">
@@ -24,6 +24,7 @@
     <!-- Styles & scripts by vendors -->
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.0.45/css/materialdesignicons.min.css">
     <script src="resources/js/confetti.js" type="text/javascript"></script>
+    <script src="js-analytics-bridge/dist/analytics-bridge.js" type="text/javascript"></script>
 
     <!-- Styles & scripts -->
     <link href="resources/css/app.css" rel="stylesheet" type="text/css" />
@@ -189,6 +190,10 @@
             <span class="game-menu-option__icon mdi mdi-format-list-numbered"></span>
             <span class="game-menu-option__title">Scores</span>
         </div>
+        <div class="game-menu-option" id="github">
+            <span class="game-menu-option__icon mdi mdi-github"></span>
+            <span class="game-menu-option__title">Github</span>
+        </div>
     </div>
 
 </div>
@@ -208,6 +213,11 @@
             <circle class="check-mark-fig-1" cx="256" cy="257" r="239"/>
             <path class="check-mark-fig-2" d="M144,247l81,79L367,186"/>
         </svg>
+    </div>
+    
+    <div class="result-score-display">
+        <div class="result-moves">0</div>
+        <div class="result-time">00:00</div>
     </div>
 
     <div class="result-screen__highlights">

@@ -6,8 +6,21 @@
  */
 
 let gameState;
+let analytics;
+let currentGameStartTime;
 
 function ready() {
+
+    // Initialize Analytics
+    try {
+        analytics = new AnalyticsManager();
+        const sessionId = 'session_' + Date.now();
+        analytics.initialize('15_puzzle_game', sessionId);
+        window.analytics = analytics; // Make available globally
+        console.log('[Game] Analytics initialized');
+    } catch (e) {
+        console.warn('[Game] Analytics not available:', e);
+    }
 
     let buttonClicks = document.querySelectorAll('.game-menu-option');
     buttonClicks.forEach( (x) => {
@@ -97,6 +110,12 @@ function ready() {
             gameMetrics.classList.remove('hidden');
             mainScreen.style.display = 'none';
             countdownScreen.style.display = 'none';
+            
+            // Analytics: Start tracking level
+            currentGameStartTime = Date.now();
+            if (analytics) {
+                analytics.startLevel('puzzle_game_' + Date.now());
+            }
         },
         theEnd() {
             actions.keyEvents.destroy();
@@ -107,6 +126,22 @@ function ready() {
             };
             confetti.start(3000, 100, 150);
             resultScreen.style.display = 'flex';
+            
+            // Update result screen score display
+            let resultMoves = document.querySelector('.result-moves');
+            let resultTime = document.querySelector('.result-time');
+            if (resultMoves) resultMoves.textContent = results.moves;
+            if (resultTime) resultTime.textContent = results.time;
+            
+            // Analytics: End level tracking
+            if (analytics && currentGameStartTime) {
+                const timeTaken = Date.now() - currentGameStartTime;
+                const xpEarned = Math.max(0, 1000 - (results.moves * 10)); // XP based on efficiency
+                analytics.endLevel('puzzle_game_' + currentGameStartTime, true, timeTaken, xpEarned);
+                analytics.addRawMetric('total_moves', results.moves);
+                analytics.addRawMetric('completion_time', results.time);
+            }
+            
             //counters.moves.reset();
             counters.seconds.stop();
         },
@@ -154,6 +189,13 @@ function ready() {
 
     btnSave.onclick = function() {
         gameState.submitResult(resultScreenInput.value);
+        
+        // Analytics: Submit report with player name
+        if (analytics) {
+            analytics.submitReport();
+            console.log('[Game] Analytics report submitted');
+        }
+        
         gameState.transition('toScores');
     };
 
@@ -164,6 +206,14 @@ function ready() {
     btnScores.onclick = function() {
         gameState.transition('toScores');
     };
+
+    let btnGithub = document.querySelector('#github');
+    
+    if (btnGithub) {
+        btnGithub.onclick = function() {
+            window.open('https://github.com/SanwikSagarPW/Puzzle15th', '_blank');
+        };
+    }
 
     btnClose.onclick = function() {
         actions.keyEvents.destroy();

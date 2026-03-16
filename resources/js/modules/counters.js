@@ -45,6 +45,11 @@ let counters = {
         add() {
             this.value++;
             this.updateHTML();
+            
+            // Analytics: Track move count
+            if (window.analytics) {
+                window.analytics.addRawMetric('move_' + this.value, Date.now());
+            }
         },
         reset() {
             this.value = 0;

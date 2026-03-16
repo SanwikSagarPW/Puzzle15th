@@ -16,7 +16,11 @@
     width: calc(100% - 0.5px);
     height: calc(100% - 0.5px);
     border: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: radial-gradient(circle, #FFD700 20%, transparent 20%),
+                radial-gradient(circle, #FFD700 20%, transparent 20%);
+    background-color: #FFF200;
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -52,11 +56,11 @@
     top: 0;
     left: 0;
     z-index: -2;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 3px solid #0066FF;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .highlights__input-container {
@@ -66,9 +70,9 @@
 
 .input-container__label {
     font-size: 0.8em;
-    color: white;
+    color: #333;
     font-weight: 600;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: none;
 }
 
 .input-container__input {
@@ -115,6 +119,26 @@
     top: 0;
 }
 
+.result-score-display {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: calc(var(--tile-width) * 0.35);
+    font-weight: 700;
+    color: #333;
+    margin-top: calc(var(--tile-width) * 3.5);
+}
+
+@media only screen and (max-width: 768px) {
+    .result-score-display {
+        font-size: calc(var(--tile-width) * 0.3);
+        gap: 30px;
+        margin-top: calc(var(--tile-width) * 3);
+    }
+}
+
 #check-mark {
     width: calc(var(--tile-width) * 3);
     height: calc(var(--tile-width) * 3);
@@ -131,15 +155,15 @@
 
 .check-mark-fig-1, .check-mark-fig-2 {
     fill: none;
-    stroke: #06ffa5;
-    stroke-width: calc(var(--tile-width) / 2);
+    stroke: #00FF00;
+    stroke-width: calc(var(--tile-width) / 3);
     stroke-linecap: round;
     stroke-linejoin: round;
-    filter: drop-shadow(0 4px 8px rgba(6, 255, 165, 0.6)) drop-shadow(0 0 20px rgba(6, 255, 165, 0.4));
+    filter: drop-shadow(0 4px 8px rgba(0, 255, 0, 0.6)) drop-shadow(0 0 20px rgba(0, 255, 0, 0.4));
 }
 .check-mark-fig-1 {
-    stroke-dasharray: 0, 2357;
-    animation: dash-1 500ms 1 forwards ease-in;
+    stroke-dasharray: 2357, 2357;
+    animation: none;
     animation-delay: 0ms;
 }
 
@@ -151,9 +175,10 @@
 
 .check-mark-fig-2 {
     stroke-dasharray: 320, 320;
-    stroke-dashoffset: 320;
-    animation: dash-2 300ms 1 forwards ease-in;
-    animation-delay: 450ms;
+    stroke-dashoffset: 0;
+    animation: none;
+    animation-delay: 0ms;
+    display: none;
 }
 
 @keyframes dash-2 {

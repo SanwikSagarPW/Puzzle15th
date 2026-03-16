@@ -10,7 +10,11 @@
     top: 0;
     left: 0;
     display: none;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: radial-gradient(circle, #FFD700 20%, transparent 20%),
+                radial-gradient(circle, #FFD700 20%, transparent 20%);
+    background-color: #FFF200;
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
     justify-content: center;
     align-items: center;
     width: calc(100% - 0.5px);
@@ -48,7 +52,7 @@
 .digit__delay-1 {animation-delay: 0s;}
 .digit__delay-2 {animation-delay: 1s;}
 .digit__delay-3 {animation-delay: 2s;}
-.digit__delay-4 {animation-delay: 3s; background: linear-gradient(135deg, #06ffa5 0%, #00d4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none; filter: drop-shadow(0 8px 16px rgba(6, 255, 165, 0.5));}
+.digit__delay-4 {animation-delay: 3s; background: #FF0000; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none; filter: drop-shadow(0 8px 16px rgba(255, 0, 0, 0.5)); font-weight: 900;}
 
 @keyframes countdown-fly-out {
     0%   {transform: scale(0.5); opacity: 0;}
