@@ -109,11 +109,13 @@ let actions = {
         htmlObj: undefined,
         lastMouseX: 0,
         lastMouseY: 0,
-        rotX: 0,
-        rotY: 0,
+        rotX: 35,
+        rotY: -5,
+        rotZ: 3,
         init() {
             if (!this.htmlObj) this.htmlObj = document.querySelector('.tiles-container');
 
+            // Mouse events
             this.htmlObj.addEventListener('mousedown', e => {
                 e.preventDefault();
                 actions.dragField.mouseDragging.set(true);
@@ -133,6 +135,25 @@ let actions = {
                 actions.dragField.mouseDragging.set(false);
                 actions.dragField.htmlObj.removeEventListener('mousemove', actions.dragField.mouseMoved, false);
             });
+
+            // Touch events for mobile
+            this.htmlObj.addEventListener('touchstart', e => {
+                e.preventDefault();
+                actions.dragField.mouseDragging.set(true);
+                actions.dragField.lastMouseX = e.touches[0].clientX;
+                actions.dragField.lastMouseY = e.touches[0].clientY;
+            }, { passive: false });
+
+            this.htmlObj.addEventListener('touchmove', e => {
+                if (!actions.dragField.mouseDragging.value) return;
+                e.preventDefault();
+                actions.dragField.touchMoved(e);
+            }, { passive: false });
+
+            this.htmlObj.addEventListener('touchend', e => {
+                e.preventDefault();
+                actions.dragField.mouseDragging.set(false);
+            }, { passive: false });
         },
         mouseDragging: {
             value: false,
@@ -159,7 +180,22 @@ let actions = {
             actions.dragField.rotY += deltaX * 0.3;
             actions.dragField.rotX -= deltaY * 0.3;
 
-            actions.dragField.htmlObj.style.transform = `rotateY(${actions.dragField.rotY}deg) rotateX(${actions.dragField.rotX}deg)`;
+            actions.dragField.htmlObj.style.transform = `rotateX(${actions.dragField.rotX}deg) rotateY(${actions.dragField.rotY}deg) rotateZ(${actions.dragField.rotZ}deg)`;
+        },
+        touchMoved(ev) {
+            if (ev.defaultPrevented) return;
+            if (!ev.touches || ev.touches.length === 0) return;
+
+            let deltaX = ev.touches[0].pageX - actions.dragField.lastMouseX;
+            let deltaY = ev.touches[0].pageY - actions.dragField.lastMouseY;
+
+            actions.dragField.lastMouseX = ev.touches[0].pageX;
+            actions.dragField.lastMouseY = ev.touches[0].pageY;
+
+            actions.dragField.rotY += deltaX * 0.3;
+            actions.dragField.rotX -= deltaY * 0.3;
+
+            actions.dragField.htmlObj.style.transform = `rotateX(${actions.dragField.rotX}deg) rotateY(${actions.dragField.rotY}deg) rotateZ(${actions.dragField.rotZ}deg)`;
         }
     }
 };

@@ -79,8 +79,8 @@ function ready() {
             btnClose.style.display = 'none';
             gameMetrics.classList.add('hidden');
             gameState.interval = setInterval(function() {
-                field.shuffle(1);
-            }, 2000);
+                field.shuffle(3);
+            }, 600);
         },
         readyCheck() {
             clearInterval(gameState.interval);
@@ -196,24 +196,12 @@ function ready() {
             console.log('[Game] Analytics report submitted');
         }
         
-        gameState.transition('toScores');
+        gameState.transition('toMainMenu');
     };
 
     btnStart.onclick = function() {
         gameState.transition('toPlay');
     };
-
-    btnScores.onclick = function() {
-        gameState.transition('toScores');
-    };
-
-    let btnGithub = document.querySelector('#github');
-    
-    if (btnGithub) {
-        btnGithub.onclick = function() {
-            window.open('https://github.com/SanwikSagarPW/Puzzle15th', '_blank');
-        };
-    }
 
     btnClose.onclick = function() {
         actions.keyEvents.destroy();

@@ -9,6 +9,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
 
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+    html {
+        height: 100dvh;
+        height: -webkit-fill-available;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     body {
         --tile-width: 18vw;
@@ -59,8 +74,8 @@ body {
     --gray-700: #495057;
     --gray-800: #343a40;
     --gray-900: #212529;
-    width: calc(100% - 0.5px);
-    height: calc(100% - 0.5px);
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     font-family: "Exo 2", sans-serif;
@@ -72,6 +87,17 @@ body {
     background-position: 0 0, 10px 10px;
     background-size: 20px 20px;
     overflow: hidden;
+    position: fixed;
+    touch-action: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        height: 100dvh;
+        height: -webkit-fill-available;
+    }
 }
 
 a {
@@ -101,8 +127,8 @@ canvas {
 .x-close {
     display: none;
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: clamp(15px, 2vh, 25px);
+    left: clamp(15px, 2vw, 25px);
     margin: 0;
     padding: 0;
     z-index: 100;
@@ -110,17 +136,59 @@ canvas {
 
 @media only screen and (max-width: 768px) {
     .x-close {
-        top: 10px;
-        left: 10px;
+        top: clamp(10px, 1.5vh, 18px);
+        left: clamp(10px, 1.5vw, 18px);
     }
     
     .x-close .game-menu-option {
-        padding: 8px 16px;
-        font-size: 11px;
+        padding: clamp(8px, 1.2vh, 12px) clamp(14px, 2vw, 20px);
+        font-size: clamp(11px, 1.6vw, 14px);
     }
     
     .x-close .game-menu-option__icon {
-        font-size: calc(var(--tile-width) * 0.4);
+        font-size: clamp(18px, 3.5vw, 28px);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .x-close {
+        top: clamp(8px, 1.2vh, 15px);
+        left: clamp(8px, 1.2vw, 15px);
+    }
+    
+    .x-close .game-menu-option {
+        padding: clamp(7px, 1vh, 10px) clamp(12px, 1.8vw, 18px);
+        font-size: clamp(10px, 1.5vw, 13px);
+    }
+    
+    .x-close .game-menu-option__icon {
+        font-size: clamp(16px, 3vw, 24px);
+    }
+}
+
+@media only screen and (max-height: 700px) {
+    .x-close {
+        top: clamp(10px, 1.5vh, 18px);
+    }
+    
+    .x-close .game-menu-option {
+        padding: clamp(6px, 0.9vh, 10px) clamp(12px, 1.8vw, 18px);
+        font-size: clamp(10px, 1.4vw, 13px);
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    .x-close {
+        top: clamp(8px, 1.2vh, 15px);
+    }
+    
+    .x-close .game-menu-option {
+        padding: clamp(5px, 0.8vh, 8px) clamp(10px, 1.5vw, 16px);
+        font-size: clamp(9px, 1.3vw, 12px);
+    }
+    
+    .x-close .game-menu-option__icon {
+        font-size: clamp(14px, 2.5vw, 20px);
     }
 }
 
@@ -128,10 +196,22 @@ canvas {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 50px;
-    padding: 12px 24px;
-    border: 3px solid #0066FF;
+    padding: clamp(10px, 1.5vh, 16px) clamp(20px, 3vw, 30px);
+    border: clamp(2px, 0.3vw, 3px) solid #0066FF;
     transition: all 0.3s ease;
     color: #0066FF;
+    font-size: clamp(12px, 1.8vw, 16px);
+    min-width: fit-content;
+}
+
+.x-close .game-menu-option__icon {
+    font-size: clamp(20px, 3.5vw, 32px);
+    margin-right: clamp(6px, 1vw, 10px);
+    margin-bottom: 0;
+}
+
+.x-close .game-menu-option__title {
+    font-size: clamp(12px, 1.8vw, 16px);
 }
 
 .x-close .game-menu-option__icon,

@@ -5,6 +5,18 @@
  *
  */
 
+// Sound effect for block movement - create multiple instances for instant playback
+const audioPool = [];
+for (let i = 0; i < 5; i++) {
+    const sound = new Audio('resources/sound/Slid_block_sfx.mp3');
+    sound.volume = 0.5;
+    sound.playbackRate = 1.5;
+    sound.preload = 'auto';
+    sound.load(); // Preload the audio
+    audioPool.push(sound);
+}
+let currentAudioIndex = 0;
+
 let field = {
     matrix: [
         // First row
@@ -75,6 +87,10 @@ let field = {
         cube.style.transform = "translateX(calc(var(--tile-width) * " + obj.toX + ")) translateY(calc(var(--tile-width) * " + obj.toY + "))";
 
         if (type === 'game') {
+            // Play sound effect using audio pool for instant playback
+            audioPool[currentAudioIndex].play().catch(e => console.log('Audio play failed:', e));
+            currentAudioIndex = (currentAudioIndex + 1) % audioPool.length;
+            
             counters.moves.add();
             this.checkCompletion();
         }
