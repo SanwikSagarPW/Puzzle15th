@@ -350,7 +350,7 @@
 @media only screen and (max-width: 768px) {
     .game-menu-option {
         flex-direction: row;
-        padding: clamp(18px, 2.5vh, 24px) 0;
+        padding: clamp(18px, 2.5vh, 24px) clamp(25px, 3.5vw, 35px);
         font-size: clamp(15px, 2.2vw, 19px);
         min-width: 0;
         width: 85%;
@@ -364,7 +364,7 @@
 @media only screen and (max-width: 480px) {
     .game-menu-option {
         width: 90%;
-        padding: clamp(16px, 2.2vh, 22px) 0;
+        padding: clamp(16px, 2.2vh, 22px) clamp(22px, 3vw, 32px);
         font-size: clamp(14px, 2vw, 18px);
     }
 }
@@ -390,11 +390,12 @@
     color: white;
     text-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
     padding: 0;
-    margin-bottom: 8px;
+    margin-bottom: clamp(8px, 1.2vh, 12px);
     font-size: clamp(40px, 6vw, 80px);
     transform: scale(1);
     transition: all .3s cubic-bezier(0.34, 1.56, 0.64, 1);
     filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+    line-height: 1;
 }
 
 @media only screen and (max-width: 768px) {
@@ -430,9 +431,11 @@
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     padding: 0;
+    margin: 0;
     font-size: clamp(16px, 2.2vw, 24px);
     letter-spacing: 0.1em;
     font-weight: 700;
+    line-height: 1.2;
 }
 
 @media only screen and (max-width: 768px) {

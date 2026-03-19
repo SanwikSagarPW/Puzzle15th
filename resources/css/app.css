@@ -141,12 +141,22 @@ canvas {
     }
     
     .x-close .game-menu-option {
-        padding: clamp(8px, 1.2vh, 12px) clamp(14px, 2vw, 20px);
-        font-size: clamp(11px, 1.6vw, 14px);
+        padding: clamp(10px, 1.5vh, 14px) clamp(20px, 3vw, 28px);
+        font-size: clamp(12px, 1.7vw, 15px);
+        min-width: clamp(85px, 11vw, 120px);
+        gap: clamp(5px, 0.9vw, 9px);
     }
     
     .x-close .game-menu-option__icon {
-        font-size: clamp(18px, 3.5vw, 28px);
+        font-size: clamp(20px, 4vw, 30px);
+        margin: 0;
+        padding: 0;
+    }
+    
+    .x-close .game-menu-option__title {
+        font-size: clamp(12px, 1.7vw, 15px);
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -157,12 +167,22 @@ canvas {
     }
     
     .x-close .game-menu-option {
-        padding: clamp(7px, 1vh, 10px) clamp(12px, 1.8vw, 18px);
-        font-size: clamp(10px, 1.5vw, 13px);
+        padding: clamp(9px, 1.3vh, 12px) clamp(18px, 2.8vw, 24px);
+        font-size: clamp(11px, 1.6vw, 14px);
+        min-width: clamp(80px, 10vw, 110px);
+        gap: clamp(5px, 0.8vw, 8px);
     }
     
     .x-close .game-menu-option__icon {
-        font-size: clamp(16px, 3vw, 24px);
+        font-size: clamp(18px, 3.5vw, 26px);
+        margin: 0;
+        padding: 0;
+    }
+    
+    .x-close .game-menu-option__title {
+        font-size: clamp(11px, 1.6vw, 14px);
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -172,8 +192,22 @@ canvas {
     }
     
     .x-close .game-menu-option {
-        padding: clamp(6px, 0.9vh, 10px) clamp(12px, 1.8vw, 18px);
-        font-size: clamp(10px, 1.4vw, 13px);
+        padding: clamp(8px, 1.2vh, 12px) clamp(18px, 2.5vw, 24px);
+        font-size: clamp(11px, 1.5vw, 14px);
+        min-width: clamp(80px, 10vw, 115px);
+        gap: clamp(5px, 0.8vw, 8px);
+    }
+    
+    .x-close .game-menu-option__icon {
+        font-size: clamp(18px, 3vw, 26px);
+        margin: 0;
+        padding: 0;
+    }
+    
+    .x-close .game-menu-option__title {
+        font-size: clamp(11px, 1.5vw, 14px);
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -183,12 +217,22 @@ canvas {
     }
     
     .x-close .game-menu-option {
-        padding: clamp(5px, 0.8vh, 8px) clamp(10px, 1.5vw, 16px);
-        font-size: clamp(9px, 1.3vw, 12px);
+        padding: clamp(7px, 1vh, 10px) clamp(16px, 2.2vw, 22px);
+        font-size: clamp(10px, 1.4vw, 13px);
+        min-width: clamp(75px, 9vw, 105px);
+        gap: clamp(4px, 0.7vw, 7px);
     }
     
     .x-close .game-menu-option__icon {
-        font-size: clamp(14px, 2.5vw, 20px);
+        font-size: clamp(16px, 2.8vw, 24px);
+        margin: 0;
+        padding: 0;
+    }
+    
+    .x-close .game-menu-option__title {
+        font-size: clamp(10px, 1.4vw, 13px);
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -196,22 +240,31 @@ canvas {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 50px;
-    padding: clamp(10px, 1.5vh, 16px) clamp(20px, 3vw, 30px);
+    padding: clamp(12px, 1.8vh, 18px) clamp(24px, 3.5vw, 36px);
     border: clamp(2px, 0.3vw, 3px) solid #0066FF;
     transition: all 0.3s ease;
     color: #0066FF;
-    font-size: clamp(12px, 1.8vw, 16px);
-    min-width: fit-content;
+    font-size: clamp(13px, 1.8vw, 17px);
+    min-width: clamp(95px, 12vw, 140px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(6px, 1vw, 10px);
 }
 
 .x-close .game-menu-option__icon {
-    font-size: clamp(20px, 3.5vw, 32px);
-    margin-right: clamp(6px, 1vw, 10px);
-    margin-bottom: 0;
+    font-size: clamp(22px, 3.8vw, 34px);
+    margin: 0;
+    padding: 0;
+    line-height: 1;
 }
 
 .x-close .game-menu-option__title {
-    font-size: clamp(12px, 1.8vw, 16px);
+    font-size: clamp(13px, 1.8vw, 17px);
+    line-height: 1;
+    margin: 0;
+    padding: 0;
 }
 
 .x-close .game-menu-option__icon,
